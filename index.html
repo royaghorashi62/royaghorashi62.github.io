@@ -1,0 +1,705 @@
+<title>Roya Ghorashi Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: court-line portfolio. Wide editorial column, thin court-white rules, tennis-ball yellow used only as a highlighter. */
+:root{
+  --bg:#F2F5F8;
+  --surface:#FFFFFF;
+  --ink:#10212F;
+  --muted:#4F6272;
+  --line:#D5DEE6;
+  --accent:#1D5FA8;      /* hard-court blue */
+  --accent-ink:#FFFFFF;
+  --ball:#DDF03A;        /* tennis-ball highlighter */
+  --ball-ink:#10212F;
+  --chip:#FFFFFF;        /* logos always sit on white */
+  --font-display:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;
+  --font-body:'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0C1822;--surface:#13242F;--ink:#E8EFF5;--muted:#9DB0BF;--line:#25394A;
+  --accent:#6AA9EE;--accent-ink:#0C1822;--ball:#DDF03A;--ball-ink:#10212F;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C1822;--surface:#13242F;--ink:#E8EFF5;--muted:#9DB0BF;--line:#25394A;
+  --accent:#6AA9EE;--accent-ink:#0C1822;--ball:#DDF03A;--ball-ink:#10212F;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:1rem;line-height:1.6;padding-inline:1rem}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:68rem;margin-inline:auto}
+h1,h2,h3{font-family:var(--font-display);line-height:1.1;text-wrap:balance;margin:0}
+p{margin:0}
+.label{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hl{background:none;color:inherit}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin-inline:-1rem;padding-inline:1rem}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem}
+.bar b{font-family:var(--font-display);font-size:1.05rem;white-space:nowrap}
+.bar nav{display:flex;gap:1.1rem;overflow-x:auto;scrollbar-width:none}
+.bar nav a{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;white-space:nowrap}
+.bar nav a:hover{color:var(--accent)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4rem;padding-block:4rem 3rem;align-items:start}
+.hero h1{font-size:clamp(2rem,5.5vw,3.6rem);white-space:nowrap;font-weight:700;letter-spacing:-.03em}
+.quote{font-family:var(--font-display);font-size:clamp(.95rem,1.8vw,1.1rem);margin-top:1rem;color:var(--muted);font-weight:500}
+.hero .role{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}
+.portrait{width:11rem;height:11rem;object-fit:cover;border-radius:4px;display:block;margin-bottom:2rem}
+.hero .intro{font-size:1.05rem;max-width:36rem}
+.hero .intro+.intro{margin-top:1rem}
+.facts{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.facts span{font-family:var(--font-mono);font-size:.78rem;border:1px solid var(--line);padding:.3rem .6rem;border-radius:2px;background:var(--surface)}
+.logorow{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:2.25rem}
+.chip{background:var(--chip);border:1px solid var(--line);border-radius:6px;height:3.25rem;padding:.4rem .7rem;display:flex;align-items:center;justify-content:center}
+.chip img{height:100%;width:auto;max-width:7.5rem;object-fit:contain;display:block}
+.chip img[src*="codex"]{height:50%}
+.logorow .chip{width:9rem;height:5.25rem;padding:.5rem 1rem}
+.logorow .chip img{height:auto;width:auto;max-height:2.8rem;max-width:100%}
+.logorow .chip img.tall{max-height:4.25rem}
+
+/* sections */
+section{border-top:2px solid var(--ink);padding-block:3rem}
+.sec-head{display:grid;grid-template-columns:minmax(0,20rem) minmax(0,1fr);gap:2rem;margin-bottom:2rem}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em}
+.sec-head p{color:var(--muted);max-width:40rem;align-self:end}
+
+/* impact */
+.numbers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-bottom:0}
+#impact{padding-bottom:1.5rem}
+.num{border-top:1px solid var(--line);padding-top:.75rem}
+.num b{display:block;font-family:var(--font-display);font-size:clamp(1.6rem,3.6vw,2.4rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.num span{display:block;margin-top:.4rem;font-size:.9rem;color:var(--muted)}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1.4rem;display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.gerry{margin:0}
+.gerry img{width:13rem;height:auto;mix-blend-mode:multiply;flex:none}
+.gerry figcaption{font-size:.78rem;color:var(--muted);max-width:11rem}
+.proj.big{grid-column:1/-1}
+.projhead{display:flex;align-items:center;gap:1rem}
+.projhead img{width:4.25rem;height:auto;flex:none;border-radius:4px;display:block}
+.projhead>div{display:flex;flex-direction:column;gap:.7rem;min-width:0}
+.proj .tag{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.proj h3{font-size:1.3rem}
+.proj ul{margin:0;padding-left:1.1rem;display:grid;gap:.4rem}
+.proj li::marker{color:var(--accent)}
+.proj.big ul{grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;padding:0;list-style:none}
+.proj.big li{border-left:3px solid var(--ball);padding-left:.8rem}
+.proj p{color:var(--muted)}
+
+/* experience */
+.jobs{display:grid;gap:0}
+.job{display:grid;grid-template-columns:7.5rem minmax(0,12rem) minmax(0,1fr);gap:1.5rem;padding-block:1.75rem;border-top:1px solid var(--line)}
+.job:first-child{border-top:0;padding-top:0}
+.job .chip{height:5rem;width:100%;max-width:7.5rem}
+.chiptext{font-family:var(--font-display);font-weight:700;font-size:1rem;line-height:1.15;text-align:center;color:#10212F}
+.job .when{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.job h3{font-size:1.3rem}
+.job .where{color:var(--muted);font-size:.92rem;margin-top:.15rem}
+.job ul{margin:.8rem 0 0;padding-left:1.1rem;display:grid;gap:.45rem}
+.job li::marker{color:var(--accent)}
+.job .tools{margin-top:.9rem;font-family:var(--font-mono);font-size:.76rem;color:var(--muted)}
+.intro{text-align:left;hyphens:none;text-wrap:balance}
+.degree{font-weight:600;color:var(--ink);font-size:1.05rem;margin-top:.6rem}
+.awardrow{display:flex;gap:1.25rem;align-items:center;margin-top:1rem}
+.awardrow img{width:8.5rem;height:auto;border-radius:3px;flex:none;display:block}
+.awardrow>div{min-width:0}
+.awardrow p{color:var(--muted);font-size:.92rem;margin-top:.5rem}
+.award{display:inline-block;color:var(--ink);font-weight:800;font-size:1.05rem;padding:0;background:none}
+
+/* skills */
+.skillgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 2rem}
+.skillgrid h3{font-size:1.05rem;margin-bottom:.6rem}
+.skillgrid p,.skillgrid li{color:var(--muted);font-size:.94rem}
+.skillgrid ul{margin:0;padding:0;list-style:none;display:grid;gap:.25rem}
+.yrs{font-family:var(--font-mono);font-size:.78rem;color:var(--accent)}
+.stack{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+
+/* education */
+.edu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1.25rem;display:grid;gap:.6rem;align-content:start;min-width:0}
+.card .chip{height:3.4rem;justify-self:start;max-width:100%}
+.card h3{font-size:1.1rem}
+.card p{color:var(--muted);font-size:.92rem}
+.certs{display:grid;grid-template-columns:minmax(0,1fr);gap:3rem;margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--line)}
+.certs h3{font-size:1.05rem;margin-bottom:.6rem}
+.certs ul{margin:0;padding-left:1.1rem;display:grid;gap:.3rem;color:var(--muted);font-size:.94rem}
+.certs li::marker{color:var(--accent)}
+.certlist{list-style:none;padding:0!important;margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(5,3rem);grid-auto-flow:column;gap:.3rem 2.5rem}
+.cert{display:grid;grid-template-columns:7.25rem minmax(0,1fr);gap:.9rem;align-items:center}
+.cert b{display:block;font-weight:600;color:var(--ink);font-size:.8rem;line-height:1.35}
+.cert b+span{display:block;color:var(--muted);font-size:.72rem}
+.clogo{display:flex}
+.chip.mini{height:2.1rem;width:7.25rem;padding:.1rem .4rem}
+.chip.mini img{height:auto;width:auto;max-width:100%;max-height:1.75rem;object-fit:contain}
+.chip.mini{justify-content:center;align-items:center}
+.chip.mini.ms img{width:4.6rem;max-width:100%;max-height:none}
+.mstext{font-family:"Segoe UI","Helvetica Neue",Arial,sans-serif;font-size:1rem;color:#5E5E5E;font-weight:500;white-space:nowrap}
+.chip.mini img[src*="umich"]{width:5.4rem}
+.chip.mini img[src*="haygroup"]{width:4.3rem}
+.chip.mini img[src*="datacamp"]{width:4.6rem}
+.chip.mini img[src*="mit.png"]{width:5rem}
+.chip.mini svg{flex:none;display:block;margin:auto}
+.mslist .msico{vertical-align:middle;margin-right:.35rem}
+
+/* research */
+.phd{display:grid;grid-template-columns:auto minmax(0,1fr);gap:1.5rem 2rem;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:1.75rem;margin-bottom:1rem}
+.phd h3{font-size:clamp(1.4rem,3vw,1.9rem);margin:.6rem 0 .8rem}
+.activities{display:grid;gap:.8rem;margin:1.5rem 0 2rem}
+.activities .roles{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:.2rem;gap:1rem}
+.phd-lede{color:var(--muted)}
+.roles{display:grid;gap:.8rem;margin-top:1.5rem}
+.roles div{border-left:3px solid var(--ball);padding-left:.8rem;display:grid}
+.roles span{font-family:var(--font-mono);font-size:.78rem;color:var(--muted)}
+.phd ul{grid-column:1/-1;margin:0;padding-left:1.1rem;display:grid;gap:.55rem;align-content:start}
+.phd li::marker{color:var(--accent)}
+.research{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+.research .card h3{font-size:1.05rem}
+
+/* beyond work */
+.hobbies{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin-bottom:2rem}
+.beyond-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.5rem 3rem;max-width:44rem;align-items:start}
+.beyond-grid .sub{margin-top:0}
+.beyond-grid .hobbies{margin:0;grid-template-columns:minmax(0,16rem)}
+.hobby{padding-top:0;display:grid;gap:.4rem;align-content:start}
+.hobby h3{font-size:1.15rem}
+.hobby p{color:var(--muted);font-size:.92rem}
+.hobby img{width:100%;border-radius:3px;display:block;margin-top:.3rem}
+.subnote{color:var(--muted);margin:-.5rem 0 1rem}
+.sub{font-family:var(--font-display);font-size:1.3rem;margin:2.25rem 0 1rem}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;max-width:16rem}
+.gallery img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;border-radius:3px;background:var(--line)}
+.pet{width:100%;max-width:16rem;aspect-ratio:279/150;object-fit:cover;border-radius:3px;display:block}
+.cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;align-items:start}
+.cats img{width:100%;border-radius:3px;display:block}
+.cats.sketches{grid-template-columns:repeat(3,minmax(0,1fr));max-width:16rem}
+.cats.sketches img{aspect-ratio:3/4;object-fit:cover}
+.cats .wide{grid-column:span 2}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2rem;align-items:end}
+.contact h2{font-size:clamp(2.2rem,6vw,4rem);letter-spacing:-.025em}
+.contact dl{margin:0;display:grid;gap:1rem}
+.contact dt{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.contact dd{margin:.15rem 0 0;font-size:1.05rem;overflow-wrap:anywhere}
+.copy{font-family:var(--font-mono);font-size:.75rem;margin-left:.5rem;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:.15rem .5rem;cursor:pointer}
+.copy:hover{border-color:var(--accent);color:var(--accent)}
+footer{border-top:1px solid var(--line);padding-block:1.5rem 2.5rem;color:var(--muted);font-size:.85rem}
+
+@media (max-width:56rem){
+  .hero{grid-template-columns:minmax(0,1fr);gap:2rem;padding-block:2.5rem 2rem}
+  .sec-head{grid-template-columns:minmax(0,1fr);gap:.75rem}
+  .numbers{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .activities .roles{grid-template-columns:minmax(0,1fr)}
+  .phd{grid-template-columns:minmax(0,1fr);gap:1.5rem;padding:1.25rem}
+  .certlist{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}
+  .projects,.research,.certs{grid-template-columns:minmax(0,1fr)}
+  .proj.big ul{grid-template-columns:minmax(0,1fr)}
+  .job{grid-template-columns:minmax(0,1fr);gap:.75rem}
+  .job .chip{max-width:7rem;height:3.4rem}
+  .skillgrid,.edu{grid-template-columns:minmax(0,1fr)}
+  .hobbies{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cats.sketches{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .beyond-grid{grid-template-columns:minmax(0,1fr)}
+  .contact{grid-template-columns:minmax(0,1fr)}
+  .bar b{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<header class="bar">
+  <div class="wrap">
+    <b>Roya Ghorashi</b>
+    <nav aria-label="Sections">
+      <a href="#impact">Impact</a>
+      <a href="#experience">Industry</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#skills">Skills</a>
+      <a href="#education">Education</a>
+      <a href="#research">Research</a>
+      <a href="#beyond">Beyond work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <img class="portrait" src="img/roya.jpg" alt="Portrait of Roya Ghorashi" width="180" height="180">
+      <p class="label">Portfolio · Dallas - Fort Worth Metroplex</p>
+      <h1 style="margin-top:1rem">Roya Ghorashi</h1>
+      <p class="degree">Ph.D. in Industrial and Manufacturing Engineering</p>
+      <p class="quote">“A persistent fighter, always seeking wisdom”</p>
+    </div>
+    <div>
+      <p class="intro">Manager of Advanced Analytics at The Coca-Cola Company, with more than ten years in data analysis, machine learning and operations research across beverage, logistics, manufacturing, and energy industries.</p>
+      <p class="intro">Lead internal and vendor data science teams, turn consumer behavior into decisions, and take models from concept to production.</p>
+      <div class="awardrow" style="margin-top:1.5rem">
+        <img src="img/award.jpg" alt="Future of Cloud and AI Awards trophy: Best Data and Advanced Analytics Project" width="120" height="160" loading="lazy">
+        <div>
+          <span class="award">“Future of Cloud &amp; AI” award winner</span>
+          <p>Best Data &amp; Advanced Analytics Project, chosen from 200 projects submitted by 140 international companies.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="logorow" aria-label="Companies I have worked with">
+    <div class="chip"><img src="img/cocacola-t.png" alt="Coca-Cola"></div>
+    <div class="chip"><img src="img/fedex-t.png" alt="FedEx Express"></div>
+    <div class="chip"><img src="img/komatsu-t.png" alt="Komatsu"></div>
+    <div class="chip"><img src="img/elutions-t.png" alt="Elutions"></div>
+    <div class="chip"><img class="tall" src="img/nigc-t.png" alt="National Iranian Gas Company"></div>
+    <div class="chip"><img src="img/buhler-t.png" alt="Bühler"></div>
+  </div>
+</div>
+
+<main class="wrap" style="margin-top:3rem">
+  <section id="impact">
+    <div class="sec-head">
+      <div><p class="label">Selected work</p><h2>Major impact</h2></div>
+      <p>Recent work at my current company, across North America, the Middle East, Europe and Asia.</p>
+    </div>
+
+    <div class="numbers">
+      <div class="num"><b>$6.5M</b><span>media efficiency gained from AI retention models</span></div>
+      <div class="num"><b>80%</b><span>churn prediction accuracy</span></div>
+      <div class="num"><b>60K</b><span>fraudulent accounts uncovered</span></div>
+      <div class="num"><b>$1M+</b><span>in prize extractions prevented</span></div>
+    </div>
+
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <div><p class="label">Career</p><h2>Industry Experience</h2></div>
+      <p>From provincial gas data in Tehran to global consumer analytics.</p>
+    </div>
+    <div class="jobs">
+      <article class="job">
+        <div class="chip"><img src="img/cocacola.png" alt="Coca-Cola"></div>
+        <div>
+          <h3>Manager, Advanced Analytics</h3>
+          <p class="where">Coca-Cola Company · Plano, TX</p>
+          <p class="when" style="margin-top:.4rem">Dec 2022 – Present</p>
+        </div>
+        <div>
+          <ul>
+            <li>Managed internal and vendor data science teams, serving as technical lead and SME responsible for performance evaluation, resource allocation, and final review and approval of all deliverables, and guiding project scoping and delivery of high-impact AI/ML solutions across multiple regions.</li>
+            <li>Represented the technical team in strategic contract negotiations, playing a key role in the acquisition and integration of NotCo's Giuseppe AI for product reinvention.</li>
+            <li>Oversaw Statements of Work (SOW) with business stakeholders, aligning project scope, deliverables, and success metrics to organizational goals.</li>
+            <li>Guided business across marketing, consumer insights, and supply chain to identify data-driven opportunities, define analytics roadmaps, shape project direction, and align data science initiatives to business priorities.</li>
+            <li>Modernized analytics frameworks and implemented AI models to drive strategic insights and measurable impact; directed end-to-end data science initiatives from concept to deployment ensuring MLOps best practices, data integrity, scalability, and business relevance.</li>
+            <li>Collaborated with data engineers to understand and structure 1PD data sources including Google Analytics (GA4), Till Data, Promo Participation, Google Ads, AppsFlyer, and WebSDK into clean, well-structured datasets and table views for use across consumer analysis projects.</li>
+            <li>Designed and applied advanced mathematical optimization techniques (IP, MIP, NLP) to solve complex production, supply chain, and resource allocation challenges.</li>
+          </ul>
+          <p class="tools">Azure ML · Azure Synapse · Microsoft Fabric · Azure DevOps · Power BI · Codex · Claude Code · ortools</p>
+        </div>
+      </article>
+    </div>
+    <div style="margin:2.5rem 0">
+      <div class="projects">
+        <article class="proj big">
+          <div class="projhead">
+            <img src="img/dahadaha.png" alt="Daha Daha logo" width="130" height="129">
+            <div>
+              <span class="tag">EMEAOU · App data analysis</span>
+              <h3>Daha Daha app user behavioral analysis</h3>
+            </div>
+          </div>
+          <p>Built and productionized AI/ML solutions on purchase behavior, promo participation, survey results and engagement data.</p>
+          <ul>
+            <li><b>User Segmentation.</b> Built a clustering model using consumer promo participation and demographic data and executed RFM and scoring techniques.</li>
+            <li><b>Churn Prediction.</b> Developed churn framework and built AI-based retention models boosting media efficiency by $6.5M and achieving 80% churn prediction accuracy.</li>
+            <li><b>Fraud Detection.</b> Built AI anomaly detection via DBSCAN clustering, uncovering 60K fraudulent accounts and preventing over $1M in prize extractions.</li>
+          </ul>
+        </article>
+  
+        <article class="proj">
+          <span class="tag">NAOU · Consumer Study (Profiling and Market proxy analysis)</span>
+          <h3>Technical Consumer Research</h3>
+          <p>Led the vendor data science team building AI clustering models on consumer study data, to sharpen targeted marketing across regions.</p>
+        </article>
+        <article class="proj">
+          <span class="tag">NAOU · Market measurement</span>
+          <h3>Market Share Analysis Model</h3>
+          <p>Developed a measurement system using Nielsen RMS data and AI models with Azure Synapse and PySpark to deliver YoY market share analysis and identify key change drivers.</p>
+        </article>
+        <article class="proj">
+          <span class="tag">Innovation</span>
+          <h3>NotCo Product Re-invention</h3>
+          <p>Key technical role in the Coca-Cola and NotCo partnership: evaluated integration of Giuseppe AI to speed up product formulation, and represented the technical team in contract negotiations.</p>
+        </article>
+        <article class="proj">
+          <span class="tag">LATAM OU and Asia · Predictive Models</span>
+          <h3>Yield Prediction and Product Stability</h3>
+          <p>Served as Subject Matter Expert and technical reviewer for vendor teams building models that optimize tea and coffee extraction (Asia) and forecast product shelf life from the Nautilus database (Latam).</p>
+        </article>
+        <article class="proj">
+          <span class="tag">CRM · NBX</span>
+          <h3>User consumption propensity</h3>
+          <p>Used Adobe platform first-party data to predict propensity of user consumption, consumer needs and brand preference. The result helped the NBX team secure budget for full-scale development.</p>
+        </article>
+        <article class="proj">
+          <span class="tag">Azure ML</span>
+          <h3>Consumer Segmentation Pipeline</h3>
+          <p>Architected the pipeline from data prep to production, with error handling, logging and parameterization built in for scale.</p>
+        </article>
+        <article class="proj">
+          <span class="tag">Optimization</span>
+          <h3>Kit Optimization</h3>
+          <p>AI-enabled optimization with ortools in Azure ML to improve bag production efficiency under complex ingredient constraints.</p>
+        </article>
+      </div>
+    </div>
+    <div class="jobs">
+
+      <article class="job">
+        <div class="chip"><img src="img/fedex.png" alt="FedEx Express"></div>
+        <div>
+          <h3>Sr. Operation Research Adviser</h3>
+          <p class="where">FedEx Express · Memphis, TN</p>
+          <p class="when" style="margin-top:.4rem">Jul 2021 – Dec 2022</p>
+        </div>
+        <div>
+          <p>Built time-series forecasts that sharpened package weight and volume predictions across the FedEx Express network.</p>
+          <ul>
+            <li><b>D83 project.</b> Led forecasting with ARIMA, SARIMA and Prophet in SAS and SQL, plus Darts through PySpark.</li>
+            <li><b>Digital Twin.</b> Built a Spotfire dashboard for ramp planning that compares actual and forecasted values.</li>
+            <li><b>C4 projects.</b> Helped integrate FedEx Ground and Express forecasts in Azure.</li>
+          </ul>
+          <p class="tools">PySpark · SAS · SQL · Spotfire · Databricks · ARIMA · SARIMA · Prophet · Darts</p>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="chip"><img src="img/komatsu.png" alt="Komatsu"></div>
+        <div>
+          <h3>Data Scientist Intern</h3>
+          <p class="where">Komatsu Mining Corp. · Milwaukee, WI</p>
+          <p class="when" style="margin-top:.4rem">Jun 2019 – Dec 2019</p>
+        </div>
+        <div>
+          <ul>
+            <li>Developed a Python payload calibration app.</li>
+            <li>Worked on the Propel KPI project to find causes of shovel shaft failure, using PySpark and SQL in Databricks.</li>
+            <li>Applied a low-pass FFT filter for denoising and defined a Composite Health Index with ARIMA for shovel hoist brake systems.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="chip"><img src="img/elutions.png" alt="Elutions"></div>
+        <div>
+          <h3>Data Scientist Intern</h3>
+          <p class="where">Elutions Inc. · Delafield, WI</p>
+          <p class="when" style="margin-top:.4rem">May 2017 – Aug 2017</p>
+        </div>
+        <div>
+          <ul>
+            <li>Cleaned and visualized client data in R.</li>
+            <li>Built a baseline statistical model and regression analyses for energy consumption prediction.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="job">
+        <div class="chip"><img src="img/nigc.png" alt="National Iranian Gas Company"></div>
+        <div>
+          <h3>Data Analyst and System Support Expert</h3>
+          <p class="where">National Iranian Gas Company · Tehran, Iran</p>
+          <p class="when" style="margin-top:.4rem">May 2008 – Aug 2014</p>
+        </div>
+        <div>
+          <ul>
+            <li>Supervised the MIS department and mentored junior team members.</li>
+            <li>Defined provincial gas delivery parameters using Excel, SPSS and Access.</li>
+            <li>Streamlined the organizational structure of all Provincial Gas Companies and ran cluster analysis.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="sec-head">
+      <div><p class="label">Academia</p><h2>Teaching Experience</h2></div>
+    </div>
+    <div class="jobs">
+      <article class="job">
+        <div class="chip"><img src="img/uwm.png" alt="University of Wisconsin-Milwaukee"></div>
+        <div>
+          <h3>Instructor and Teaching Assistant</h3>
+          <p class="where">University of Wisconsin-Milwaukee · Milwaukee, WI</p>
+          <p class="when" style="margin-top:.4rem">Sep 2014 – Dec 2019</p>
+        </div>
+        <div>
+          <p>Taught Statistics, Engineering Economics Systems and Lean Manufacturing Production alongside my Ph.D. in Industrial and Manufacturing Engineering.</p>
+        </div>
+      </article>
+      <article class="job">
+        <div class="chip"><img src="img/payamnoor.png" alt="Payame Noor University"></div>
+        <div>
+          <h3>Adjunct Professor</h3>
+          <p class="where">Payame Noor University · Tehran, Iran</p>
+        </div>
+        <div>
+          <p>Taught Value Engineering and software applications in Industrial Engineering.</p>
+        </div>
+      </article>
+      <article class="job">
+        <div class="chip"><img src="img/azad.png" alt="Azad University logo"></div>
+        <div>
+          <h3>Instructor</h3>
+          <p class="where">Sama Institute, Azad University</p>
+        </div>
+        <div>
+          <p>Taught Statistics and Mathematics.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <div><p class="label">Toolkit</p><h2>Skills</h2></div>
+    </div>
+    <div class="stack" aria-label="Tools">
+      <div class="chip"><img src="img/python.png" alt="Python"></div>
+      <div class="chip"><img src="img/sql.png" alt="SQL"></div>
+      <div class="chip"><img src="img/pyspark.png" alt="PySpark"></div>
+      <div class="chip"><img src="img/cpp.png" alt="C++"></div>
+      <div class="chip"><img src="img/sas.png" alt="SAS"></div>
+      <div class="chip"><img src="img/azure.png" alt="Azure"></div>
+      <div class="chip"><img src="img/azureml.png" alt="Azure Machine Learning"></div>
+      <div class="chip"><img src="img/synapse.jpg" alt="Azure Synapse Analytics"></div>
+      <div class="chip"><img src="img/fabric.png" alt="Microsoft Fabric"></div>
+      <div class="chip"><img src="img/databricks.png" alt="Azure Databricks"></div>
+      <div class="chip"><img src="img/powerbi.png" alt="Power BI"></div>
+      <div class="chip"><img src="img/spotfire.png" alt="TIBCO Spotfire"></div>
+      <div class="chip"><img src="img/arcgis.png" alt="ArcGIS"></div>
+      <div class="chip"><img src="img/ortools.jpg" alt="Google OR-Tools"></div>
+      <div class="chip"><img src="img/cplex.png" alt="IBM CPLEX"></div>
+      <div class="chip"><img src="img/claudecode.png" alt="Claude Code"></div>
+      <div class="chip"><img src="img/codex.png" alt="Codex"></div>
+    </div>
+    <div class="skillgrid">
+      <div>
+        <h3>Programming</h3>
+        <ul>
+          <li>Python <span class="yrs">5+ yrs</span></li>
+          <li>SQL <span class="yrs">4+ yrs</span></li>
+          <li>PySpark <span class="yrs">4+ yrs</span></li>
+          <li>C++ <span class="yrs">3+ yrs</span></li>
+          <li>R <span class="yrs">2+ yrs</span></li>
+          <li>SAS <span class="yrs">2+ yrs</span></li>
+          <li>CPLEX <span class="yrs">2+ yrs</span></li>
+        </ul>
+      </div>
+      <div>
+        <h3>AI and generative methods</h3>
+        <p>AI-assisted development (Codex, Claude Code), agentic AI, neural networks (TensorFlow, Keras), and NLP with prompt engineering and conversational AI.</p>
+        <h3 style="margin-top:1.25rem">Statistics and machine learning</h3>
+        <p>Regression and classification (SVM, decision trees, random forest, gradient boosting, PCA), clustering (K-means, hierarchical), graph theory, recommendation systems, feature engineering (Featuretools), SHAP, and time-series forecasting (Darts, Kats).</p>
+      </div>
+      <div>
+        <h3>Operations research</h3>
+        <p>LP, IP, MIP, NLP, multiobjective programming and network optimization, plus heuristics such as simulated annealing and genetic algorithms.</p>
+        <h3 style="margin-top:1.25rem">Data platforms and visualization</h3>
+        <p>Azure DevOps, Databricks, Azure ML, Azure Synapse, Power BI, Spotfire, Kafka, Snowflake, Teradata Studio, ArcGIS, ggplot and Matplotlib.</p>
+        <h3 style="margin-top:1.25rem">Business</h3>
+        <p>Supply chain logistics, continuous improvement, and promo engineering with predictive modeling, segmentation, optimization and NLP.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head">
+      <div><p class="label">Learning</p><h2>Education</h2></div>
+    </div>
+    <div class="edu">
+      <div class="card">
+        <div class="chip"><img src="img/uwm.png" alt="University of Wisconsin-Milwaukee"></div>
+        <h3>Ph.D., Industrial and Manufacturing Engineering</h3>
+        <p>University of Wisconsin-Milwaukee, 2014 – 2020 · GPA 3.91</p>
+        <p style="margin-top:.5rem"><b>Dissertation:</b> <a href="https://minds.wisc.edu/items/9edc0097-2db5-41e1-ba0a-cf623ee3eba1" rel="noopener" style="text-decoration:none">Math Models and Heuristic Methods for Constructing Fair Political Districts</a></p>
+      </div>
+      <div class="card">
+        <div class="chip"><img src="img/payamnoor.png" alt="Payame Noor University"></div>
+        <h3>M.Sc., Industrial Engineering</h3>
+        <p>Payame Noor University of Tehran, Tehran · Top Student Award</p>
+        <p style="margin-top:.5rem"><b>Master Thesis:</b> Application of a Fuzzy Inventory Control Method in the case of Natural Disaster: Case Study: Earthquake Disaster</p>
+      </div>
+      <div class="card">
+        <div class="chip"><img src="img/iust.png" alt="Iran University of Science and Technology"></div>
+        <h3>B.Sc., Industrial Engineering</h3>
+        <p>Iran University of Science and Technology, Tehran · Outstanding Student Award</p>
+        <p style="margin-top:.5rem"><b>Bachelor Thesis:</b> Instructions for Establishing Volunteer Firefighting Centers</p>
+      </div>
+    </div>
+    <div class="certs">
+      <div>
+        <h3>Certifications</h3>
+        <ul class="certlist">
+          <li class="cert"><div class="clogo"><span class="chip mini"><img src="img/mit.png" alt="MIT"></span></div><div><b>Data Science and Machine Learning Program</b><span>MIT College of Computing</span></div></li>
+          <li class="cert"><div class="clogo"><span class="chip mini ms"><img src="img/microsoft.png" alt="Microsoft"></span></div><div><b>Azure Fundamentals</b><span>Microsoft</span></div></li>
+          <li class="cert"><div class="clogo"><span class="chip mini ms"><img src="img/microsoft.png" alt="Microsoft"></span></div><div><b>Azure Data Scientist</b><span>Microsoft</span></div></li>
+          <li class="cert"><div class="clogo"><span class="chip mini"><img src="img/umich.png" alt="University of Michigan"></span></div><div><b>Applied Machine Learning in Python</b><span>University of Michigan</span></div></li>
+          <li class="cert"><div class="clogo"><span class="chip mini"><img src="img/haygroup.png" alt="Hay Group"></span></div><div><b>Job Evaluation &amp; Guide Chart Methodology Course, Jobs Evaluation Techniques</b><span>Hay Group</span></div></li>
+          <li class="cert"><div class="clogo"><span class="chip mini"><img src="img/jhu-coursera.png" alt="Coursera, Johns Hopkins University"></span></div><div><b>R Programming</b><span>Johns Hopkins University</span></div></li>
+          <li class="cert"><div class="clogo"><span class="chip mini"><img src="img/jhu-coursera.png" alt="Coursera, Johns Hopkins University"></span></div><div><b>Practical Machine Learning</b><span>Johns Hopkins University</span></div></li>
+          <li class="cert"><div class="clogo"><span class="chip mini"><img src="img/ibm-coursera.png" alt="IBM on Coursera"></span></div><div><b>Data Analysis with Python</b><span>IBM</span></div></li>
+          <li class="cert"><div class="clogo"><span class="chip mini"><img src="img/datacamp.png" alt="DataCamp"></span></div><div><b>Python, SQL, Power BI, tree-based models, scikit-learn, Matplotlib, Large Language Models, Microsoft Fabric</b><span>DataCamp</span></div></li>
+          <li class="cert"><div class="clogo"></div><div><b>Business Strategic Management</b><span>Certificate</span></div></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Conferences</h3>
+        <ul>
+          <li>NVIDIA GTC 2026</li>
+          <li>Coca-Cola Global Tech Summit 2025</li>
+          <li>Coca-Cola Global Tech Summit 2023, presenter: shared Daha Daha results with executive leadership and international bottlers</li>
+          <li>2018 INFORMS Annual Meeting, Phoenix, AZ, USA, presenter: Math Models and Heuristic Methods for Constructing Fair Political Districts</li>
+          <li>2017 INFORMS Annual Meeting, Houston, TX, USA, presenter: A mixed-integer model and genetic algorithm that assign optimal locations to rectangular items in warehouses</li>
+          <li>International Conference on Green Manufacturing Engineering, Boston, USA, 2015: Manufacturing Facility Location Selection: A Numerical Taxonomy Approach</li>
+          <li>2nd International Conference on Disaster Management and Human Health: Reducing Risk, Improving Outcomes, Orlando, USA, 2011: Application of a Fuzzy Inventory Control Method in the case of Natural Disasters</li>
+          <li>7th International Industrial Engineering Conference IUT, Isfahan, Iran, 2010, presenter: Submission of a Fuzzy Inventory Control Method in Natural Disasters</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="sec-head">
+      <div><p class="label">Academic and side projects</p><h2>Research</h2></div>
+      <p>My dissertation was about drawing fair political districts. Below it are two other Ph.D. projects and my personal side projects.</p>
+    </div>
+    <article class="phd">
+    <figure class="gerry"><img src="img/gerrymander.png" alt="1812 political cartoon of a Massachusetts district drawn as a salamander, the original gerrymander" width="271" height="257" loading="lazy"></figure>
+      <div>
+        <p class="label">Ph.D. dissertation · UWM</p>
+        <h3><a href="https://minds.wisc.edu/items/9edc0097-2db5-41e1-ba0a-cf623ee3eba1" rel="noopener" style="color:inherit;text-decoration:none">Math Models and Heuristic Methods for Constructing Fair Political Districts</a></h3>
+        <p class="phd-lede">I built exact math models and a heuristic model that draw equitable political districts, then applied them to Wisconsin's real political, demographic, and geographic data to redraw the State of Wisconsin political map.</p>
+      </div>
+      <ul>
+        <li>Developed math models (MIP and column generation) and proposed Simulated Annealing as a heuristic for constructing fair political districts.</li>
+        <li>Coded the exact models in CPLEX and the heuristic in C++.</li>
+        <li>Collected and cleaned Wisconsin political, demographic, and geographic data with ArcGIS and R.</li>
+        <li>Applied the algorithm to form Wisconsin State Assembly, State Senate and U.S. Congressional districts.</li>
+      </ul>
+    </article>
+    <div class="research">
+      <div class="card">
+        <p class="label">Ph.D. project</p>
+        <h3>Warehouse layout optimization</h3>
+        <p>A mixed-integer model and genetic algorithm that assign optimal locations to rectangular items in warehouses, written in C++ and CPLEX in cooperation with my advisor.</p>
+      </div>
+      <div class="card">
+        <p class="label">Ph.D. project</p>
+        <h3>Manufacturing site selection</h3>
+        <p>K-means and agglomerative hierarchical clustering of countries by the attributes that affect where to locate manufacturing operations, presented as a new approach to site selection in a global context.</p>
+      </div>
+    </div>
+
+    <div class="activities" style="margin-top:3rem">
+      <p class="label">Ph.D. activities beyond the dissertation</p>
+      <div class="roles">
+        <div><b>Instructor and Teaching Assistant</b><span>UWM · Sep 2014 – Dec 2019</span></div>
+        <div><b>Secretary, INFORMS Student Chapter @ UWM</b><span>Jan 2018 – Sep 2019</span></div>
+      </div>
+    </div>
+
+    <h3 class="sub" style="margin-top:3rem">Side projects</h3>
+    <p class="subnote">Personal projects outside of work and school.</p>
+    <div class="research">
+      <div class="card">
+        <h3>Marketplace listing agent</h3>
+        <p>An LLM-powered agent that combines web scraping with rules-based scoring to find, evaluate and rank Facebook Marketplace listings by the gap between price and market value, tuned to product type and condition.</p>
+      </div>
+      <div class="card">
+        <h3>Consumer data sources</h3>
+        <p>Research on the general and specialized sources of consumer and shopper data.</p>
+      </div>
+      <div class="card">
+        <h3>Porto Seguro Safe Driver Prediction</h3>
+        <p>Kaggle collaboration using LightGBM, XGBoost and random forest in R and Python.</p>
+      </div>
+      <div class="card">
+        <h3>Home Price Prediction</h3>
+        <p>Kaggle collaboration using LightGBM, XGBoost and random forest in R and Python.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="beyond">
+    <div class="sec-head">
+      <div><h2>Beyond work</h2></div>
+      <p style="font-weight:600;color:var(--ink)">I play tennis, write poems, watch movies, draw, travel, and bake a lot.</p>
+    </div>
+    <div class="beyond-grid">
+      <div>
+    <h3 class="sub">Sketches</h3>
+    <div class="cats sketches">
+      <img src="img/draw1.jpg" alt="Pencil sketch" loading="lazy">
+      <img src="img/draw2.jpg" alt="Pencil portrait of a woman" loading="lazy">
+      <img src="img/draw3.jpg" alt="Pencil sketch of a dress" loading="lazy">
+    </div>
+      </div>
+      <div>
+    <h3 class="sub">Cooking and baking</h3>
+    <div class="gallery">
+      <img src="img/bake-piano.jpg" alt="Cake decorated like a piano keyboard" loading="lazy">
+      <img src="img/bake-snowman.jpg" alt="Snowman cake with blue scarf" loading="lazy">
+      <img src="img/bake-fried.jpg" alt="Plate of golden fried syrup-soaked pastries" loading="lazy">
+    </div>
+      </div>
+      <div>
+    <div class="hobbies">
+      <div class="hobby">
+        <h3>Tennis</h3>
+        <p>Playing it, and following the major events closely.</p>
+        <img src="img/tennis.jpg" alt="Tennis balls and a racket on a clay court" loading="lazy">
+      </div>
+    </div>
+      </div>
+      <div>
+    <h3 class="sub">Pet lover</h3>
+    <img class="pet" src="img/cats1.jpg" alt="Two cats resting on a scratching post" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div>
+        <p class="label" style="margin-bottom:1rem">Contact</p>
+        <h2>Let’s talk about <span class="hl">data</span>.</h2>
+      </div>
+      <dl>
+        <div><dt>Email</dt><dd><span id="em">roya.ghorashi@gmail.com</span><button class="copy" type="button" id="cp">Copy</button></dd></div>
+        <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/roya-ghorashi-phd" rel="noopener">linkedin.com/in/roya-ghorashi-phd</a></dd></div>
+        <div><dt>Location</dt><dd>Dallas - Fort Worth Metroplex · US Citizen</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <footer>© 2026 Roya Ghorashi</footer>
+</main>
+
+<script>
+(function(){
+  var b=document.getElementById('cp'),t=document.getElementById('em');
+  b.addEventListener('click',function(){
+    var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy'},1500)};
+    var fall=function(){var r=document.createRange();r.selectNodeContents(t);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'};
+    try{navigator.clipboard.writeText(t.textContent).then(done,fall)}catch(e){fall()}
+  });
+})();
+</script>
